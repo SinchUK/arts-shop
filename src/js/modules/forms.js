@@ -1,10 +1,12 @@
 // import checkNumInputs from './checkNumInputs';
+import { postData } from "../services/requests";
 
 const forms = () => {
     const form = document.querySelectorAll('form'),
           inputs = document.querySelectorAll('input'),
-          upload = document.querySelectorAll('[name = "upload"]');
-
+          upload = document.querySelectorAll('[name = "upload"]'),
+          textAreas = document.querySelectorAll('[textarea]');
+          
     // checkNumInputs('input[name="user_phone"]');
     
     const message = {
@@ -21,19 +23,19 @@ const forms = () => {
         question: 'assets/question.php'
     };
 
-    const postData = async (url, data) => {
-        let res = await fetch(url, {
-            method: "POST",
-            body: data
-        });
-
-        return await res.text();
-    };
+   
 
     const clearInputs = () => {
+
         inputs.forEach(item => {
+
             item.value = '';
         });
+
+        textAreas.forEach(item => {
+            item.value = '';
+        });
+        
         upload.forEach(item => {
             item.previousElementSibling.textContent = "Файл не выбран";
         });
@@ -74,14 +76,25 @@ const forms = () => {
             statusMessage.appendChild(textMessage);
 
             const formData = new FormData(item);
+
+            const totalPrice = document.querySelector('.calc-price').innerHTML;
+            console.log(totalPrice, 'totalPrice');
+            const total = {
+                total: totalPrice
+            };
+
+            if (item.classList.contains('calc-form')) {
+                formData.append(total);
+                console.log(formData, 'formData');
+            }
+            
             let api;
             item.closest('.popup-design') || item.classList.contains('calc_form') ?
             api = path.designer : api = path.question;
-            console.log(api);
 
             postData(api, formData)
                 .then(res => {
-                    console.log(res);
+                    console.log(res, 'res');
                     statusImg.setAttribute('src', message.ok);
                     textMessage.textContent = message.success;
                 })
