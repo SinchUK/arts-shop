@@ -1,4 +1,5 @@
 /*jshint esversion: 6 */ 
+import filter from "./modules/filter";
 import calc from "./modules/calc";
 import checkTextInputs from "./modules/checkTextInputs";
 import forms from "./modules/forms";
@@ -6,6 +7,8 @@ import mask from "./modules/mask";
 import modals from "./modules/modals";
 import showMoreStyles from "./modules/showMoreStyles";
 import sliders from "./modules/sliders";
+import pictureSize from "./modules/pictureSize";
+import accordeon from "./modules/accordeon";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -19,4 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
     checkTextInputs('[name="message"]');
     showMoreStyles('.button-styles', '#styles .row');
     calc('#size','#material', '#options', '.promocode', '.calc-price');
+    filter();
+    pictureSize('.sizes-block');
+    accordeon('.accordion-heading','.accordion-block');
 });

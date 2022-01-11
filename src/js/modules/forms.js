@@ -73,11 +73,11 @@ const forms = () => {
 
       const formData = new FormData(item);
 
-      // const totalPrice = +document.querySelector('.calc-price').innerHTML;
+      const totalPrice = +document.querySelector('.calc-price').innerHTML;
 
-      // if (item.classList.contains('calc_form')) {
-      //     formData.append('total', totalPrice );
-      // }
+      if (item.classList.contains('calc_form')) {
+          formData.append('total', +totalPrice );
+      }
 
       // const json = JSON.stringify(Object.fromEntries(formData));
       // console.log(json, 'json');
