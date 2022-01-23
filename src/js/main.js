@@ -10,6 +10,7 @@ import sliders from "./modules/sliders";
 import pictureSize from "./modules/pictureSize";
 import accordeon from "./modules/accordeon";
 import burger from "./modules/burger";
+import scroling from "./modules/scroling";
 
 window.addEventListener('DOMContentLoaded', () => {
     'use strict';
@@ -27,4 +28,5 @@ window.addEventListener('DOMContentLoaded', () => {
     pictureSize('.sizes-block');
     accordeon('.accordion-heading');
     burger('.burger-menu','.burger');
+    scroling('.pageup');
 });
