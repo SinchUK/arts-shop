@@ -39,7 +39,7 @@ const forms = () => {
 
   upload.forEach((item) => {
     item.addEventListener("input", () => {
-      // console.log(item.files[0]);
+      console.log(item.files[0], 'from form');
       let dots;
       const arr = item.files[0].name.split(".");
 
