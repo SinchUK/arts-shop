@@ -67,7 +67,10 @@ const drop = () => {
             input.files = e.dataTransfer.files;
             // send file after drop to server
             const formData = new FormData();
-            formData.append(input.files[0].name, input.files[0]);
+            input.files.forEach(file => {
+                formData.append(file.name, file);
+            });
+            // formData.append(input.files[0].name, input.files[0]);
 
             postData('assets/server.php', formData)
               .then((res) => {
